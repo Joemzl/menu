@@ -1,0 +1,3 @@
+<text class="status-badge {{status}}">
+  {{statusMap[status].label || status}}
+</text>

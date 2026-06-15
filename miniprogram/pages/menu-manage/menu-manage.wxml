@@ -1,0 +1,63 @@
+<view class="page">
+  <!-- 菜单头部 -->
+  <view class="header">
+    <text class="header-title">{{menuTitle || '菜品管理'}}</text>
+    <view class="header-meta" wx:if="{{menu.password}}">🔒 密码：{{menu.password}}</view>
+  </view>
+
+  <!-- 菜品列表 -->
+  <view wx:if="{{dishes.length === 0}}" class="empty-state">
+    <text>还没有菜品，点击下方添加</text>
+  </view>
+
+  <view wx:for="{{dishes}}" wx:key="_id" class="card dish-manage-card">
+    <view class="flex-between">
+      <view class="flex">
+        <image class="manage-dish-icon" src="{{item.iconUrl || '/images/default-dish.png'}}" mode="aspectFill" />
+        <view class="ml-16">
+          <text class="dish-name">{{item.name}}</text>
+          <view class="dish-meta">
+            <text class="meta-tag">{{categories[0].label}}</text>
+            <text class="meta-price">{{item.price}} H币</text>
+          </view>
+        </view>
+      </view>
+      <view class="dish-actions">
+        <text class="action-btn" data-dish="{{item}}" bindtap="onEditDish">编辑</text>
+        <text class="action-btn danger" data-dish="{{item}}" bindtap="onDeleteDish">删除</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 添加按钮 -->
+  <view class="fab" bindtap="onShowAdd">+</view>
+
+  <!-- 添加/编辑弹窗 -->
+  <view class="modal" wx:if="{{showAdd}}" catchtouchmove="noop">
+    <view class="modal-mask" bindtap="onCloseAdd"></view>
+    <view class="modal-content">
+      <text class="modal-title">{{editMode ? '编辑菜品' : '添加菜品'}}</text>
+      
+      <!-- 图标 -->
+      <view class="upload-area" bindtap="onChooseImage">
+        <image wx:if="{{formIconUrl}}" src="{{formIconUrl}}" mode="aspectFill" class="upload-preview" />
+        <text wx:else class="upload-hint">点击上传图标</text>
+      </view>
+
+      <input class="input" placeholder="菜品名称" value="{{formName}}" bindinput="e => ({formName: e.detail.value})" />
+      
+      <view class="flex-between">
+        <input class="input flex-1" style="margin-right:16rpx;" type="digit" placeholder="价格(H币)" value="{{formPrice}}" bindinput="e => ({formPrice: e.detail.value})" />
+        
+        <picker mode="selector" range="{{categories}}" range-key="label" value="{{formCategory}}" bindchange="e => ({formCategory: categories[e.detail.value].key})">
+          <view class="picker">{{formCategory}}</view>
+        </picker>
+      </view>
+
+      <view class="modal-btns">
+        <button class="btn-outline" bindtap="onCloseAdd">取消</button>
+        <button class="btn-primary" bindtap="{{editMode ? 'onUpdateDish' : 'onAddDish'}}">{{editMode ? '保存' : '添加'}}</button>
+      </view>
+    </view>
+  </view>
+</view>

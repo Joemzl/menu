@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="header">
+    <text class="header-title">购物车</text>
+  </view>
+
+  <view wx:if="{{items.length === 0}}" class="empty-state">
+    <text>购物车空空如也</text>
+  </view>
+
+  <view wx:for="{{items}}" wx:key="dishId" class="card cart-item">
+    <view class="flex-between">
+      <view class="flex-1">
+        <text class="item-name">{{item.dishName}}</text>
+        <text class="item-price">{{item.lockedPrice}} H币 × {{item.quantity}}</text>
+      </view>
+      <view class="stepper">
+        <view class="stepper-btn" data-index="{{index}}" data-delta="{{-1}}" bindtap="onQuantityChange">−</view>
+        <text class="stepper-count">{{item.quantity}}</text>
+        <view class="stepper-btn" data-index="{{index}}" data-delta="{{1}}" bindtap="onQuantityChange">+</view>
+      </view>
+    </view>
+    <text class="subtotal">小计：{{item.lockedPrice * item.quantity}} H币</text>
+  </view>
+
+  <!-- 底部结算 -->
+  <view class="footer" wx:if="{{items.length > 0}}">
+    <view class="footer-info">
+      <text class="total-label">合计</text>
+      <text class="total-price">{{totalPrice}} H币</text>
+    </view>
+    <button class="btn-order" bindtap="onPlaceOrder" loading="{{submitting}}">下单</button>
+  </view>
+</view>

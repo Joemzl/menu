@@ -1,0 +1,30 @@
+.page { min-height: 100vh; padding-bottom: 48rpx; }
+
+.status-header { padding: 32rpx 24rpx; background: #FFF; }
+
+.section-title { font-size: 28rpx; font-weight: 600; margin-bottom: 20rpx; display: block; }
+
+.item-row { display: flex; justify-content: space-between; padding: 12rpx 0; border-bottom: 1rpx solid #F5F5F5; }
+.item-name { font-size: 28rpx; }
+.item-subtotal { font-size: 26rpx; color: #666; }
+
+.divider { height: 1rpx; background: #EEE; margin: 16rpx 0; }
+
+.total-label { font-size: 26rpx; color: #666; }
+.total-price { font-size: 40rpx; font-weight: 700; color: #FF6B35; }
+
+.timeline { padding-left: 24rpx; }
+.tl-item { position: relative; padding: 16rpx 0 16rpx 32rpx; border-left: 2rpx solid #E0E0E0; color: #CCC; }
+.tl-item.done { border-left-color: #07C160; color: #333; }
+.tl-item::before { content: ''; position: absolute; left: -8rpx; top: 20rpx; width: 14rpx; height: 14rpx; border-radius: 50%; background: #E0E0E0; }
+.tl-item.done::before { background: #07C160; }
+.tl-label { font-size: 26rpx; display: block; }
+.tl-time { font-size: 22rpx; display: block; }
+
+.rated-text { font-size: 28rpx; color: #FF9500; }
+.expired-text { font-size: 26rpx; color: #CCC; }
+
+.btn-cancel { width: 100%; height: 80rpx; line-height: 80rpx; border-radius: 12rpx; font-size: 28rpx; background: #FA5151; color: #FFF; border: none; }
+
+.mt-16 { margin-top: 16rpx; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }

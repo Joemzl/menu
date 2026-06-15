@@ -1,0 +1,40 @@
+<view class="page">
+  <!-- 过期提示 -->
+  <view class="expired-bar" wx:if="{{expired}}">
+    <text>⏰ 菜单已结束，仅可查看</text>
+  </view>
+
+  <!-- 主体：分类栏 + 菜品区 -->
+  <view class="main-body">
+    <category-bar activeKey="{{activeCategory}}" bind:change="onCategoryChange" />
+
+    <view class="dish-area">
+      <!-- 空分类提示 -->
+      <view wx:if="{{filteredDishes.length === 0}}" class="empty-state">
+        <text wx:if="{{dishes.length === 0}}">暂无菜品，等待厨师添加</text>
+        <text wx:else>该分类暂无菜品</text>
+      </view>
+
+      <!-- 菜品列表 -->
+      <dish-card
+        wx:for="{{filteredDishes}}"
+        wx:key="_id"
+        dish="{{item}}"
+        quantity="{{0}}"
+        showStepper="{{!expired}}"
+        disabled="{{expired}}"
+        bind:change="onDishChange"
+      />
+    </view>
+  </view>
+
+  <!-- 购物车汇总条 -->
+  <view class="cart-bar" wx:if="{{cartCount > 0 && !expired}}" bindtap="onOpenCart">
+    <view class="cart-info">
+      <text class="cart-icon">🛒</text>
+      <text class="cart-count">{{cartCount}}份</text>
+    </view>
+    <view class="cart-total">{{cartTotal}} H币</view>
+    <view class="cart-btn">去下单 →</view>
+  </view>
+</view>

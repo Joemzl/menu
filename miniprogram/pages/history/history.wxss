@@ -1,0 +1,17 @@
+.page { min-height: 100vh; padding-bottom: 48rpx; }
+.header { padding: 24rpx 32rpx; background: #FFF; display: flex; justify-content: space-between; align-items: center; }
+.header-title { font-size: 32rpx; font-weight: 600; }
+.balance-text { font-size: 26rpx; color: #FF6B35; font-weight: 500; }
+
+.order-card { margin: 12rpx 24rpx; }
+.order-time { font-size: 24rpx; color: #999; }
+.order-price { font-size: 32rpx; font-weight: 600; color: #FF6B35; }
+.order-summary { display: flex; flex-wrap: wrap; gap: 8rpx; }
+.summary-item { font-size: 24rpx; color: #666; }
+.rating-text { font-size: 24rpx; color: #FF9500; }
+
+.btn-cancel { width: 100%; height: 64rpx; line-height: 64rpx; border-radius: 8rpx; font-size: 26rpx; background: #FA5151; color: #FFF; border: none; }
+
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.mt-8 { margin-top: 8rpx; }
+.mt-16 { margin-top: 16rpx; }

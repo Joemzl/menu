@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="header">
+    <text class="header-title">历史订单</text>
+    <text class="balance-text">余额：{{app.globalData.coinBalance}} H币</text>
+  </view>
+
+  <view wx:if="{{orders.length === 0}}" class="empty-state">
+    <text>暂无订单记录</text>
+  </view>
+
+  <view wx:for="{{orders}}" wx:key="_id" class="card order-card" data-id="{{item._id}}" bindtap="onViewOrder">
+    <view class="flex-between">
+      <view>
+        <text class="order-time">{{item.placedAt}}</text>
+        <view class="mt-8">
+          <status-badge status="{{item.status}}" />
+        </view>
+      </view>
+      <text class="order-price">{{item.totalPrice}} H币</text>
+    </view>
+    <view class="order-summary mt-16">
+      <text wx:for="{{item.items}}" wx:key="dishId" class="summary-item">{{item.dishName}}×{{item.quantity}} </text>
+    </view>
+    <!-- 评分展示 -->
+    <view class="mt-8" wx:if="{{item.rating}}">
+      <text class="rating-text">评分：{{'★'.repeat(item.rating)}}{{'☆'.repeat(5-item.rating)}} +{{item.bonusCoins}}H币</text>
+    </view>
+    <!-- 取消按钮 -->
+    <view class="mt-16" wx:if="{{item.status === 'placed'}}">
+      <button class="btn-cancel" data-id="{{item._id}}" catchtap="onCancelOrder">取消订单</button>
+    </view>
+  </view>
+</view>

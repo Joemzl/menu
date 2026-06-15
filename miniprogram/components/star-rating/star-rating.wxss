@@ -1,0 +1,4 @@
+.star-rating { display: flex; gap: 8rpx; }
+.star { font-size: 48rpx; color: #E0E0E0; transition: color 0.2s; }
+.star.active { color: #FF9500; }
+.star.tappable:active { transform: scale(1.2); }

@@ -1,0 +1,72 @@
+<view class="page">
+  <!-- 角色选择 -->
+  <view class="role-section" wx:if="{{!role}}">
+    <view class="role-header">选择你的身份</view>
+    <view class="role-options">
+      <view class="role-card" data-role="chef" bindtap="onRoleSelect">
+        <text class="role-icon">👨‍🍳</text>
+        <text class="role-title">我是厨师</text>
+        <text class="role-desc">创建菜单，管理菜品，处理订单</text>
+      </view>
+      <view class="role-card" data-role="diner" bindtap="onRoleSelect">
+        <text class="role-icon">🍽️</text>
+        <text class="role-title">我要点菜</text>
+        <text class="role-desc">浏览菜单，点菜下单</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 厨师端：菜单列表 -->
+  <view class="menu-section" wx:if="{{role === 'chef'}}">
+    <view class="header-bar">
+      <text class="section-title">我的菜单</text>
+      <button class="btn-create" bindtap="onShowCreate">+ 新建</button>
+    </view>
+
+    <view wx:if="{{menus.length === 0}}" class="empty-state">
+      <text>暂无菜单，点击上方新建</text>
+    </view>
+
+    <view wx:for="{{menus}}" wx:key="_id" class="card menu-card">
+      <view class="flex-between">
+        <view>
+          <text class="menu-title">{{item.title}}</text>
+          <view class="menu-meta">
+            <text class="meta-item">{{item.isActive ? '启用中' : '已关闭'}}</text>
+            <text class="meta-item" wx:if="{{item.password}}">🔒 密码保护</text>
+          </view>
+        </view>
+        <view class="menu-actions">
+          <button class="btn-small" data-id="{{item._id}}" bindtap="onMenuManage">管理</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 点菜端：简要提示 -->
+  <view class="menu-section" wx:if="{{role === 'diner'}}">
+    <view class="empty-state">
+      <text style="font-size:48rpx;margin-bottom:24rpx;">🔗</text>
+      <text>请通过微信聊天中的分享链接打开菜单</text>
+      <text style="margin-top:12rpx;font-size:24rpx;color:#999;">或扫描二维码进入点菜页面</text>
+    </view>
+  </view>
+
+  <!-- 新建菜单弹窗 -->
+  <view class="modal" wx:if="{{showCreate}}">
+    <view class="modal-mask" bindtap="onCancelCreate"></view>
+    <view class="modal-content">
+      <text class="modal-title">新建菜单</text>
+      <input class="input" placeholder="菜单名称" value="{{newMenuTitle}}" bindinput="e => ({newMenuTitle: e.detail.value})" />
+      <view class="toggle-row" bindtap="e => ({usePassword: !usePassword})">
+        <text>密码保护</text>
+        <switch checked="{{usePassword}}" />
+      </view>
+      <input class="input" wx:if="{{usePassword}}" type="number" maxlength="4" placeholder="设置4位数字密码" value="{{newMenuPassword}}" bindinput="e => ({newMenuPassword: e.detail.value})" />
+      <view class="modal-btns">
+        <button class="btn-outline" bindtap="onCancelCreate">取消</button>
+        <button class="btn-primary" bindtap="onCreateMenu" loading="{{creating}}">创建</button>
+      </view>
+    </view>
+  </view>
+</view>

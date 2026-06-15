@@ -1,0 +1,56 @@
+<view class="page">
+  <!-- 余额 -->
+  <view class="balance-bar">
+    <text class="balance-label">我的H币余额</text>
+    <text class="balance-amount">{{chefBalance}}</text>
+    <text class="balance-link" bindtap="onShowTransactions">查看流水 →</text>
+  </view>
+
+  <!-- 筛选 -->
+  <scroll-view scroll-x class="filter-bar">
+    <view wx:for="{{statusOptions}}" wx:key="value" class="filter-tab {{statusFilter === item.value ? 'active' : ''}}" data-value="{{item.value}}" bindtap="onFilterTap">{{item.label}}</view>
+  </scroll-view>
+
+  <!-- 订单列表 -->
+  <view wx:if="{{orders.length === 0}}" class="empty-state">
+    <text>暂无新订单</text>
+  </view>
+
+  <view wx:for="{{orders}}" wx:key="_id" class="card order-card" data-id="{{item._id}}" bindtap="onViewOrder">
+    <view class="flex-between">
+      <view>
+        <text class="order-diner">{{item.dinerName || '食客'}}</text>
+        <view class="mt-8">
+          <status-badge status="{{item.status}}" />
+        </view>
+      </view>
+      <view>
+        <text class="order-price">{{item.totalPrice}} H币</text>
+      </view>
+    </view>
+    <view class="order-actions mt-16" wx:if="{{item.status === 'placed' || item.status === 'accepted'}}">
+      <button class="btn-accept" wx:if="{{item.status === 'placed'}}" data-id="{{item._id}}" catchtap="onAccept">接单</button>
+      <button class="btn-complete" wx:if="{{item.status === 'accepted'}}" data-id="{{item._id}}" catchtap="onComplete">完成</button>
+    </view>
+  </view>
+
+  <!-- 流水弹窗 -->
+  <view class="modal" wx:if="{{showTransactions}}">
+    <view class="modal-mask" bindtap="onHideTransactions"></view>
+    <view class="modal-content txn-modal">
+      <text class="modal-title">H币流水</text>
+      <scroll-view scroll-y style="max-height:600rpx;">
+        <view wx:for="{{transactions}}" wx:key="_id" class="txn-item">
+          <view class="flex-between">
+            <text class="txn-desc">{{item.description}}</text>
+            <text class="txn-amount {{item.amount > 0 ? 'income' : 'expense'}}">{{item.amount > 0 ? '+' : ''}}{{item.amount}}</text>
+          </view>
+          <text class="txn-time">{{item.createdAt}}</text>
+        </view>
+        <view wx:if="{{transactions.length === 0}}" class="empty-state">
+          <text>暂无流水</text>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

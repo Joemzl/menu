@@ -1,0 +1,22 @@
+.page { min-height: 100vh; padding-bottom: 160rpx; }
+
+.header { padding: 24rpx 32rpx; background: #FFF; }
+.header-title { font-size: 32rpx; font-weight: 600; }
+
+.cart-item { margin: 12rpx 24rpx; padding: 24rpx; }
+.item-name { font-size: 28rpx; font-weight: 500; }
+.item-price { font-size: 24rpx; color: #999; display: block; margin-top: 4rpx; }
+.subtotal { font-size: 24rpx; color: #FF6B35; margin-top: 12rpx; display: block; }
+
+.stepper { display: flex; align-items: center; }
+.stepper-btn { width: 48rpx; height: 48rpx; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2rpx solid #FF6B35; font-size: 28rpx; color: #FF6B35; background: transparent; }
+.stepper-count { min-width: 48rpx; text-align: center; font-size: 28rpx; margin: 0 8rpx; }
+
+.footer { position: fixed; bottom: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; padding: 24rpx 32rpx; background: #FFF; box-shadow: 0 -2rpx 12rpx rgba(0,0,0,0.06); z-index: 50; box-sizing: border-box; }
+.footer-info { display: flex; flex-direction: column; }
+.total-label { font-size: 24rpx; color: #999; }
+.total-price { font-size: 40rpx; font-weight: 700; color: #FF6B35; }
+.btn-order { background: #FF6B35; color: #FFF; font-size: 32rpx; padding: 16rpx 64rpx; border-radius: 12rpx; border: none; }
+
+.flex-1 { flex: 1; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }

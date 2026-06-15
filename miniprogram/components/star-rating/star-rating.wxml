@@ -1,0 +1,9 @@
+<view class="star-rating">
+  <text
+    wx:for="{{stars}}"
+    wx:key="*this"
+    class="star {{readOnly ? '' : 'tappable'}} {{item <= rating ? 'active' : ''}}"
+    data-value="{{item}}"
+    bindtap="onTap"
+  >★</text>
+</view>

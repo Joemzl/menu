@@ -1,0 +1,12 @@
+<view class="category-bar">
+  <view
+    wx:for="{{categories}}"
+    wx:key="key"
+    class="category-item {{activeKey === item.key ? 'active' : ''}}"
+    data-key="{{item.key}}"
+    bindtap="onTap"
+  >
+    <text class="category-icon">{{item.icon}}</text>
+    <text class="category-label">{{item.label}}</text>
+  </view>
+</view>

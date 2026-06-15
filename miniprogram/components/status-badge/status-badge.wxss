@@ -1,0 +1,5 @@
+.status-badge { display: inline-flex; padding: 4rpx 16rpx; border-radius: 6rpx; font-size: 22rpx; }
+.status-badge.placed { background: #FFF3E0; color: #E65100; }
+.status-badge.accepted { background: #E3F2FD; color: #0D47A1; }
+.status-badge.completed { background: #E8F5E9; color: #1B5E20; }
+.status-badge.cancelled { background: #F5F5F5; color: #757575; }

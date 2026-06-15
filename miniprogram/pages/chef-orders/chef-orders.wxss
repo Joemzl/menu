@@ -1,0 +1,35 @@
+.page { min-height: 100vh; padding-bottom: 48rpx; }
+
+.balance-bar { display: flex; align-items: center; padding: 24rpx 32rpx; background: linear-gradient(135deg, #FF6B35, #FF8C60); color: #FFF; }
+.balance-label { font-size: 24rpx; opacity: 0.8; }
+.balance-amount { font-size: 48rpx; font-weight: 700; margin: 0 16rpx; }
+.balance-link { font-size: 24rpx; opacity: 0.8; margin-left: auto; }
+
+.filter-bar { white-space: nowrap; padding: 16rpx 24rpx; background: #FFF; }
+.filter-tab { display: inline-block; padding: 12rpx 28rpx; margin-right: 12rpx; border-radius: 32rpx; font-size: 24rpx; background: #F5F5F5; color: #666; }
+.filter-tab.active { background: #FF6B35; color: #FFF; }
+
+.order-card { margin: 12rpx 24rpx; }
+.order-diner { font-size: 28rpx; font-weight: 500; }
+.order-price { font-size: 32rpx; font-weight: 600; color: #FF6B35; }
+.order-actions { display: flex; gap: 16rpx; }
+.order-actions button { flex: 1; height: 72rpx; line-height: 72rpx; border-radius: 8rpx; font-size: 26rpx; border: none; }
+.btn-accept { background: #1677FF !important; color: #FFF !important; }
+.btn-complete { background: #07C160 !important; color: #FFF !important; }
+
+.txn-modal { max-height: 80vh; }
+.txn-item { padding: 20rpx 0; border-bottom: 1rpx solid #F0F0F0; }
+.txn-desc { font-size: 26rpx; }
+.txn-amount { font-size: 28rpx; font-weight: 600; }
+.txn-amount.income { color: #07C160; }
+.txn-amount.expense { color: #FA5151; }
+.txn-time { font-size: 22rpx; color: #CCC; margin-top: 4rpx; }
+
+.modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; }
+.modal-mask { position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
+.modal-content { position: relative; width: 600rpx; background: #FFF; border-radius: 16rpx; padding: 40rpx; }
+.modal-title { font-size: 32rpx; font-weight: 600; text-align: center; margin-bottom: 24rpx; display: block; }
+
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.mt-8 { margin-top: 8rpx; }
+.mt-16 { margin-top: 16rpx; }

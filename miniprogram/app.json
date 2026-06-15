@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/menu-manage/menu-manage",
+    "pages/menu/menu",
+    "pages/password-entry/password-entry",
+    "pages/cart/cart",
+    "pages/chef-orders/chef-orders",
+    "pages/history/history",
+    "pages/order-detail/order-detail"
+  ],
+  "window": {
+    "navigationBarTitleText": "MenuOrder 点菜",
+    "navigationBarBackgroundColor": "#FF6B35",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F5F5F5"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

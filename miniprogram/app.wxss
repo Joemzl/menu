@@ -1,0 +1,198 @@
+/* ============================================
+   MenuOrder 全局样式
+   ============================================ */
+
+/* 颜色变量 (CSS 变量在微信小程序中不原生支持，使用类名替代) */
+page {
+  --primary: #FF6B35;
+  --primary-light: #FF8C60;
+  --bg: #F5F5F5;
+  --card-bg: #FFFFFF;
+  --text-primary: #333333;
+  --text-secondary: #999999;
+  --text-hint: #CCCCCC;
+  --border: #EEEEEE;
+  --success: #07C160;
+  --warning: #FF9500;
+  --danger: #FA5151;
+  --info: #1677FF;
+
+  --status-placed: #FF9500;
+  --status-accepted: #1677FF;
+  --status-completed: #07C160;
+  --status-cancelled: #999999;
+
+  --font-xl: 36rpx;
+  --font-lg: 32rpx;
+  --font-md: 28rpx;
+  --font-sm: 24rpx;
+  --font-xs: 20rpx;
+
+  --radius: 16rpx;
+  --radius-sm: 8rpx;
+  --touch-min: 88rpx;  /* 44pt ≈ 88rpx */
+}
+
+page {
+  background-color: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-size: var(--font-md);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* 卡片样式 */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 24rpx;
+  margin: 16rpx 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+/* 按钮基础样式 */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-min);
+  min-width: var(--touch-min);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-md);
+  font-weight: 500;
+  padding: 0 32rpx;
+  border: none;
+  outline: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #FFFFFF;
+}
+
+.btn-primary:active {
+  background: var(--primary-light);
+}
+
+.btn-primary[disabled] {
+  background: #CCCCCC;
+  color: #999999;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 2rpx solid var(--primary);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #FFFFFF;
+}
+
+/* 状态标签样式 */
+.status-placed { color: var(--status-placed); }
+.status-accepted { color: var(--status-accepted); }
+.status-completed { color: var(--status-completed); }
+.status-cancelled { color: var(--status-cancelled); }
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4rpx 16rpx;
+  border-radius: 6rpx;
+  font-size: var(--font-sm);
+}
+
+.status-badge.placed { background: #FFF3E0; color: #E65100; }
+.status-badge.accepted { background: #E3F2FD; color: #0D47A1; }
+.status-badge.completed { background: #E8F5E9; color: #1B5E20; }
+.status-badge.cancelled { background: #F5F5F5; color: #757575; }
+
+/* 加减按钮 */
+.stepper {
+  display: flex;
+  align-items: center;
+}
+
+.stepper-btn {
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2rpx solid var(--primary);
+  font-size: 36rpx;
+  line-height: 1;
+  color: var(--primary);
+  background: transparent;
+}
+
+.stepper-btn:active {
+  background: var(--primary);
+  color: #FFFFFF;
+}
+
+.stepper-btn[disabled] {
+  border-color: #CCCCCC;
+  color: #CCCCCC;
+}
+
+.stepper-count {
+  min-width: 64rpx;
+  text-align: center;
+  font-size: var(--font-lg);
+  margin: 0 12rpx;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 48rpx;
+}
+
+.empty-state text {
+  color: var(--text-hint);
+  font-size: var(--font-md);
+}
+
+/* 通用间距 */
+.mt-8 { margin-top: 8rpx; }
+.mt-16 { margin-top: 16rpx; }
+.mt-24 { margin-top: 24rpx; }
+.mb-16 { margin-bottom: 16rpx; }
+.p-16 { padding: 16rpx; }
+.p-24 { padding: 24rpx; }
+
+/* flex 布局 */
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-1 { flex: 1; }
+
+/* 密码输入框 */
+.password-input {
+  display: flex;
+  gap: 24rpx;
+  justify-content: center;
+  margin: 48rpx 0;
+}
+.password-dot {
+  width: 88rpx;
+  height: 88rpx;
+  border: 2rpx solid var(--border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48rpx;
+  background: var(--card-bg);
+}
+.password-dot.active {
+  border-color: var(--primary);
+}

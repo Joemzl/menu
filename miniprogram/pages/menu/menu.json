@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "category-bar": "../../components/category-bar/category-bar",
+    "dish-card": "../../components/dish-card/dish-card"
+  }
+}

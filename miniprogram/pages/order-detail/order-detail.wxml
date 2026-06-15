@@ -1,0 +1,65 @@
+<view class="page">
+  <view wx:if="{{!order._id}}" class="empty-state">
+    <text>加载中...</text>
+  </view>
+
+  <view wx:else>
+    <!-- 状态头部 -->
+    <view class="status-header">
+      <status-badge status="{{order.status}}" />
+      <text class="order-time mt-16">{{order.placedAt}}</text>
+    </view>
+
+    <!-- 菜品明细 -->
+    <view class="card">
+      <text class="section-title">菜品明细</text>
+      <view wx:for="{{items}}" wx:key="dishId" class="item-row">
+        <text class="item-name">{{item.dishName}} × {{item.quantity}}</text>
+        <text class="item-subtotal">{{item.lockedPrice * item.quantity}} H币</text>
+      </view>
+      <view class="divider"></view>
+      <view class="flex-between">
+        <text class="total-label">合计</text>
+        <text class="total-price">{{order.totalPrice}} H币</text>
+      </view>
+    </view>
+
+    <!-- 时间轴 -->
+    <view class="card">
+      <text class="section-title">订单状态</text>
+      <view class="timeline">
+        <view class="tl-item {{order.placedAt ? 'done' : ''}}">
+          <text class="tl-label">已下单</text>
+          <text class="tl-time">{{order.placedAt || '—'}}</text>
+        </view>
+        <view class="tl-item {{order.acceptedAt ? 'done' : ''}}">
+          <text class="tl-label">已接单</text>
+          <text class="tl-time">{{order.acceptedAt || '—'}}</text>
+        </view>
+        <view class="tl-item {{order.completedAt ? 'done' : ''}}">
+          <text class="tl-label">已完成</text>
+          <text class="tl-time">{{order.completedAt || '—'}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 评分区域 -->
+    <view class="card" wx:if="{{order.status === 'completed'}}">
+      <text class="section-title">评价</text>
+      <view wx:if="{{rated}}">
+        <text class="rated-text">已评分 ★×{{order.rating}} +{{order.bonusCoins}}H币</text>
+      </view>
+      <view wx:elif="{{ratingExpired}}">
+        <text class="expired-text">评分已过期（超过7天）</text>
+      </view>
+      <view wx:else>
+        <star-rating rating="{{0}}" bind:rate="onRate" />
+      </view>
+    </view>
+
+    <!-- 取消按钮 -->
+    <view class="card" wx:if="{{order.status === 'placed' && order.dinerId === app.globalData.openid}}">
+      <button class="btn-cancel" bindtap="onCancelOrder">取消订单</button>
+    </view>
+  </view>
+</view>

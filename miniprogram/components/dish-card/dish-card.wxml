@@ -1,0 +1,12 @@
+<view class="dish-card">
+  <image class="dish-icon" src="{{dish.iconUrl || '/images/default-dish.png'}}" mode="aspectFill" />
+  <view class="dish-info">
+    <text class="dish-name">{{dish.name}}</text>
+    <text class="dish-price">{{dish.price}} H币</text>
+  </view>
+  <view class="dish-stepper" wx:if="{{showStepper}}">
+    <view class="stepper-btn {{disabled ? 'disabled' : ''}}" bindtap="onMinus">−</view>
+    <text class="stepper-count">{{quantity}}</text>
+    <view class="stepper-btn {{disabled ? 'disabled' : ''}}" bindtap="onPlus">+</view>
+  </view>
+</view>
